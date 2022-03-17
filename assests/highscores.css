@@ -2,12 +2,38 @@ body {
     color: black;
 }
 
+.container{
+    display: flex;
+    align-items: center;
+}
+
 #highScoresList {
-    list-style: none;
+    list-style: numeric;
     margin-bottom: 4rem;
+    text-align: left;
 }
 
 .high-score {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.title{
+    text-align: center;
+}
+
+#highScores{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nameList{
+    padding-top: 0.5rem;
+    font-weight: bold;
+}
+
+button{
+    margin: 5px;
 }

@@ -3,22 +3,19 @@ const startBtn = document.querySelector("#start-btn");
 const questionsAnswers = document.querySelector(".box")
 const questionText = document.querySelector("#question");
 const answers = document.querySelector("#answerBox");
-var endGameText = document.querySelector(".container");
+const endGameText = document.querySelector(".container");
+const resetButton = document.querySelector(".reset-button");
+const timerElement = document.querySelector(".timer-count");
+const win = document.querySelector(".win");
 // using let for these undefined classes as they will be redefined later //
 let randomQuestion = undefined;
 let currentQuestion = undefined;
-
-var resetButton = document.querySelector(".reset-button");
-var win = document.querySelector(".win");
-// var lose = document.querySelector(".lose");
-var timerElement = document.querySelector(".timer-count");
-var winCounter = 0;
-// var loseCounter = 0;
-var isWin = false;
 var timer = undefined;
 var timerCount = undefined;
+var winCounter = 0;
 
-// array of objects containing the questions and the answers //
+
+// Array of objects containing the questions and the answers //
 const questionsList = [
         {
             Question: "Commonly used data types DO NOT include:",
@@ -56,16 +53,23 @@ const questionsList = [
                 {text: "Hypertext Markup Loading", Correct: false},
                 {text: "None of the above", Correct: false}
             ]
+        },
+        {
+            Question: "What tag is used to connect a stylesheet to your index.HTML file?",
+            Answer: [
+                {text: "Link tag", Correct: true},
+                {text: "Script tag", Correct: false},
+                {text: "Head tag", Correct: false},
+                {text: "Stylesheet tag", Correct: false}
+            ]
         }
 
 ];
-const questionLength = questionsList.length;
 // click event for starting the game upon click of the start button //
 startBtn.addEventListener("click", startGame);
 
-// initial function run at the start of the game with some nested functions inside //
+// initial function run when the start button is clicked, with some nested functions inside //
 function startGame() {
-    console.log("started")
     timerCount = 20
     timerElement.textContent = timerCount;
     startTimer()
@@ -75,11 +79,7 @@ function startGame() {
     currentQuestion = 0
     nextQuestion()
 }
-
-// The winGame function is called when the win condition is met
-
-  
-  // The loseGame function is called when timer reaches 0
+  // The gameover function is called when timer reaches 0 or all questions are answered, this function stores your score to be used to submit a high score //
   function gameOver() {
     endGameText.innerHTML = "Game Over!"
     return window.location.assign('highscores.HTML')
@@ -90,13 +90,7 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
-      if (timerCount >= 0) {
-        // Tests if win condition is met
-        if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-        }
-      }
+
       // Tests if time has run out
       if (timerCount === 0) {
         // Clears interval
@@ -106,8 +100,7 @@ function startTimer() {
     }, 1000);
   }
 
-// function that shows the next question upon the answering of the previous one //
-    
+// function that shows the next question upon the correct answering of the previous one //
     function nextQuestion() {
     reset()
     showQuestion(randomQuestion[currentQuestion++]) 
@@ -139,7 +132,7 @@ function reset() {
 
 
     
-// function that checks clicked answer against the correct type in the object //
+// function that checks clicked answer against the correct type in the object and acts accordingly //
 function checkAnswers(e) {
     const answerPicked = e.target
     const correct = answerPicked.dataset.Correct
@@ -151,7 +144,9 @@ function checkAnswers(e) {
             win.innerHTML++
             localStorage.setItem("mostRecentScore", win.innerHTML)
             gameOver();
-        } else if (!correct) {
+        } 
+        // Subtracts an additional second for every wrongly clicked answer, theres only 4 seconds per question anyway so thats a big enough penalty //
+            else if (!correct) {
             timerCount--
         }
 }
