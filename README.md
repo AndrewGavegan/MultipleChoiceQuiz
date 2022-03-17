@@ -5,7 +5,9 @@ Once submitting you may click play again. you can also navigate to the highscore
 
 <<<<<<< HEAD
 =======
-The code is live here: 
+The code is live here: https://andrewgavegan.github.io/MultipleChoiceQuiz/index.HTML
+
+Hope you enjoy!
 
 ![Quiz-Screenshot2](https://user-images.githubusercontent.com/91113260/158750461-2ae86a54-1c22-49ac-97c2-405704fd08d4.PNG)
 ![Quiz-Screenshot1](https://user-images.githubusercontent.com/91113260/158750478-3bb1708a-c091-42d9-917d-263117eb9ce3.PNG)
