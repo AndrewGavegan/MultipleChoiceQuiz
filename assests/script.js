@@ -77,10 +77,7 @@ function startGame() {
 }
 
 // The winGame function is called when the win condition is met
-function winGame() {
-    winCounter++
-    setWins()
-  }
+
   
   // The loseGame function is called when timer reaches 0
   function gameOver() {
@@ -98,7 +95,6 @@ function startTimer() {
         if (isWin && timerCount > 0) {
           // Clears interval and stops timer
           clearInterval(timer);
-          winGame();
         }
       }
       // Tests if time has run out
@@ -142,37 +138,22 @@ function reset() {
 }
 
 
+    
 // function that checks clicked answer against the correct type in the object //
 function checkAnswers(e) {
     const answerPicked = e.target
     const correct = answerPicked.dataset.Correct
     if (correct && randomQuestion.length > currentQuestion) {
-        winGame()
+        win.innerHTML++
+        localStorage.setItem("mostRecentScore", win.innerHTML)
         nextQuestion()
     }   else if (correct && randomQuestion.length == currentQuestion) {
+            win.innerHTML++
+            localStorage.setItem("mostRecentScore", win.innerHTML)
             gameOver();
+        } else if (!correct) {
+            timerCount--
         }
 }
 
-function setWins() {
-    win.textContent = winCounter;
-    localStorage.setItem("winCount", winCounter);
-  }
   
-
-// These functions are used by init
-function getWins() {
-    // Get stored value from client storage, if it exists
-    var storedWins = localStorage.getItem("winCount");
-    // If stored value doesn't exist, set counter to 0
-    if (storedWins === null) {
-      winCounter = 0;
-    } else {
-      // If a value is retrieved from client storage set the winCounter to that value
-      winCounter = storedWins;
-    }
-    //Render win count to page
-    win.textContent = winCounter;
-  }
-
-

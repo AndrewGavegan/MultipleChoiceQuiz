@@ -11,11 +11,23 @@
 <body>
     <div class="container">
         <div id="highScores">
-            <h1 id="finalScore">Leaderboard</h1>
+            <h1 id="finalScore">0</h1>
             <ul id="highScoresList"></ul>
-            <a href="./index.HTML" class="btn">Go Home<i class="fas fa-home"></i></a>
-            <input type="text" id="initials" placeholder="Enter Initials">
-            <button id="saveBtn">Save Score</button>
+            <form>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Enter your name or initials!"
+                />
+                <button
+                  type="submit"
+                  id="saveBtn"
+                >
+                  Save
+                </button>
+              </form>
+              <button id="returnBtn">Game Screen</button>
         </div>
     </div>
     <script src="./assests/highscores.js"></script>
