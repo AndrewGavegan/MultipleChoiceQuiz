@@ -12,7 +12,7 @@ returnBtn.addEventListener('click', () =>{
 
 // creating a variable that holds the stored score that you got, then prints it next to some strings to remind you what you got //
 const mostRecentScore = localStorage.getItem('mostRecentScore')
-finalScore.innerHTML = "You got " + mostRecentScore + " points!";
+finalScore.innerHTML = "You scored " + mostRecentScore + "!   ";
 
 
 const MAX_HIGH_SCORES = 5
