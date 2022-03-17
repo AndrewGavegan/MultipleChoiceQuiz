@@ -8,7 +8,7 @@ body{
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -22,6 +22,66 @@ body{
 #start-btn{
     font-size: 1.5em;
 }
+
+.reset-button {
+    font-size: 16px;
+    height: 30px;
+    line-height: 8px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 0px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    cursor: pointer;
+  }
+
+#highscoreTab{
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+  .win-loss-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  .results {
+    width: 30vw;
+    height: 400px;
+  }
+
+  .large-font {
+    font-size: 3.5em;
+    text-align: center;
+  }
+  
+  .timer {
+    height: 240px;
+    padding: 10px;
+    background: #13293d;
+    color: black;
+    text-align: center;
+  }
+  
+  .timer-text {
+    padding: 55px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 2px;
+    padding: 20px;
+  }
+
+  .word-guess,
+  .results {
+    width: 20vw;
+    position: absolute;
+    right: 80px;
+    top: 100px;
+  }
 
 .container{
     max-width: 50%;
